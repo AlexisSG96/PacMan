@@ -39,6 +39,9 @@ class StartScreen:
         self.rvuln_3 = None
         self.rvuln_4 = None
 
+        self.pacman = None
+        self.rpacman = None
+
         self.intro_images = []
         self.intro = None
         self.rinto = None
@@ -98,12 +101,11 @@ class StartScreen:
 
     def initialize_left_pac(self):
         self.left_images = [pygame.image.load('images/pacman0.png'),
-                             pygame.image.load('images/pacman1.png')]
+                            pygame.image.load('images/pacman1.png')]
         self.leftpac = self.left_images[self.image_index]
         self.rleft = self.leftpac.get_rect()
         self.rleft.center = self.screen_rect.center
         self.rleft.x = self.rleft.x + self.settings.SIZE * 12
-
 
     def initialize_inky(self):
         self.inky_images = [pygame.image.load('images/Inky_2.png'),

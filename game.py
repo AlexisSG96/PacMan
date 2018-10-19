@@ -23,7 +23,7 @@ class Game:
         self.stats = GameStats(settings=ai_settings)
         self.sb = Scoreboard(settings=ai_settings, screen=self.screen, stats=self.stats)
 
-        # self.expandfile = ExpandFile('images/pacman_maze.txt', expandBy=4)
+        # self.expandfile = ExpandFile('images/pacman_maze.txt', expandby=4)
         self.maze = Maze(self.screen, mazefile='images/pacman_maze.txt', brickfile='brick', blueportalfile='bluePortal',
                          orangeportalfile='orangePortal', shieldfile='shield', pointfile='point', powerfile='power')
 
