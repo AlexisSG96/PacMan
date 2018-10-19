@@ -234,8 +234,8 @@ class Player:
     @staticmethod
     def check_high_score(stats):
         """Check if high score needs to be updated."""
-        if stats.score > stats.high_score:
-            stats.high_score = stats.score
+        if stats.player_score > stats.high_score:
+            stats.high_score = stats.player_score
 
     def check_pick_up(self, rect, maze):
         counter = 0
@@ -244,6 +244,7 @@ class Player:
                 if not self.channel.get_busy():
                     self.channel.play(self.player_chomp)
                 self.stats.player_score += 50
+                self.check_high_score(self.stats)
                 self.sb.prep_player_score()
                 maze.points.pop(counter)
             counter += 1

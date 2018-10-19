@@ -39,8 +39,15 @@ class StartScreen:
         self.rvuln_3 = None
         self.rvuln_4 = None
 
-        self.pacman = None
-        self.rpacman = None
+        self.width, self.height = 200, 50
+        self.text_color = (255, 255, 0)
+        self.black = (0, 0, 0)
+        self.font = pygame.font.SysFont(None, 120)
+        self.pacman = 'PACMAN'
+        self.pacman_image = self.font.render(self.pacman, True, self.text_color, self.black)
+        self.rpacman = self.pacman_image.get_rect()
+        self.rpacman.center = self.screen_rect.center
+        self.rpacman.y = self.rpacman.y - self.screen_rect.height/4 - self.settings.SIZE
 
         self.intro_images = []
         self.intro = None
@@ -240,6 +247,7 @@ class StartScreen:
             self.introduction = True
 
     def draw_images(self):
+        self.screen.blit(self.pacman_image, self.rpacman)
         if not self.introduction:
             if not self.channel.get_busy():
                 self.channel.play(self.intermission)
