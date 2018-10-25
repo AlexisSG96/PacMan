@@ -1,4 +1,5 @@
 import pygame
+from imagerect import ImageRect
 
 
 class StartScreen:
@@ -43,15 +44,39 @@ class StartScreen:
         self.text_color = (255, 255, 0)
         self.black = (0, 0, 0)
         self.font = pygame.font.SysFont(None, 120)
+        self.intro_font = pygame.font.SysFont(None, 40)
         self.pacman = 'PACMAN'
         self.pacman_image = self.font.render(self.pacman, True, self.text_color, self.black)
         self.rpacman = self.pacman_image.get_rect()
         self.rpacman.center = self.screen_rect.center
         self.rpacman.y = self.rpacman.y - self.screen_rect.height/4 - self.settings.SIZE
+        self.intro_inky = "Meet Inky: "
+        self.int_ink_img = self.intro_font.render(self.intro_inky, True, self.text_color, self.black)
+        self.rint_ink = self.int_ink_img.get_rect()
+        self.rint_ink.center = self.screen_rect.center
+        self.rint_ink.x -= self.SIZE * 2
+        self.intro_blinky = "Meet Blinky: "
+        self.int_blink_img = self.intro_font.render(self.intro_blinky, True, self.text_color, self.black)
+        self.rint_blink = self.int_blink_img.get_rect()
+        self.rint_blink.center = self.screen_rect.center
+        self.rint_blink.x -= self.SIZE * 2
+        self.intro_clyde = "Meet Clyde: "
+        self.int_clyde_img = self.intro_font.render(self.intro_clyde, True, self.text_color, self.black)
+        self.rint_clyde = self.int_clyde_img.get_rect()
+        self.rint_clyde.center = self.screen_rect.center
+        self.rint_clyde.x -= self.SIZE * 2
+        self.intro_pinky = "Meet Pinky: "
+        self.int_pink_img = self.intro_font.render(self.intro_pinky, True, self.text_color, self.black)
+        self.rint_pink = self.int_pink_img.get_rect()
+        self.rint_pink.center = self.screen_rect.center
+        self.rint_pink.x -= self.SIZE * 2
+        self.counter = 0
 
         self.intro_images = []
+        self.intro_index = None
         self.intro = None
-        self.rinto = None
+        self.intros = []
+
         self.intro_names = []
         self.name = None
         self.rname = None
@@ -75,6 +100,7 @@ class StartScreen:
         self.introduction = False
 
         # self.initialize_introduction()
+        self.initialize_introductions()
         self.initialize_right_pac()
         self.initialize_left_pac()
         self.initialize_inky()
@@ -97,6 +123,21 @@ class StartScreen:
         self.intermission = pygame.mixer.Sound('sounds/pacman_intermission.wav')
         self.intermission.set_volume(0.05)
         self.channel = self.settings.begin
+
+    def initialize_introductions(self):
+        self.intro_images = ['Inky_0',
+                             'Blinky_0',
+                             'Clyde_0',
+                             'Pinky_0']
+        self.counter = 0
+        self.intro_index = 0
+        self.image = self.intro_images[self.intro_index]
+        self.intro = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
+        r = self.intro.rect
+        w, h = r.width, r.height
+        x_pos = self.screen_rect.width/2 + self.SIZE * 6
+        y_pos = self.screen_rect.height/2 - self.SIZE
+        self.intros.append(pygame.Rect(x_pos, y_pos, w, h))
 
     def initialize_right_pac(self):
         self.right_images = [pygame.image.load('images/pacman2.png'),
@@ -302,5 +343,33 @@ class StartScreen:
                     self.rightpac = self.right_images[self.image_index]
                     self.leftpac = self.left_images[self.image_index]
                     self.animation = 1
-        else:
-            self.introduction = False
+        if self.introduction:
+            if self.channel.get_busy():
+                pygame.mixer.fadeout(10000)
+            time_test = pygame.time.get_ticks()
+            if self.counter == 4:
+                self.counter = 0
+                self.intro_index = 0
+                self.introduction = False
+            elif self.counter == 3:
+                for rect in self.intros:
+                    self.screen.blit(self.intro.image, rect)
+                self.screen.blit(self.int_pink_img, self.rint_pink)
+            elif self.counter == 2:
+                for rect in self.intros:
+                    self.screen.blit(self.intro.image, rect)
+                self.screen.blit(self.int_clyde_img, self.rint_clyde)
+            elif self.counter == 1:
+                for rect in self.intros:
+                    self.screen.blit(self.intro.image, rect)
+                self.screen.blit(self.int_blink_img, self.rint_blink)
+            elif self.counter == 0:
+                for rect in self.intros:
+                    self.screen.blit(self.intro.image, rect)
+                self.screen.blit(self.int_ink_img, self.rint_ink)
+            if abs(self.last_frame - time_test) > 3000:
+                self.last_frame = time_test
+                self.intro_index = (self.intro_index + 1) % len(self.intro_images)
+                self.image = self.intro_images[self.intro_index]
+                self.counter += 1
+                self.intro = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
