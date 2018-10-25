@@ -47,6 +47,6 @@ X...........XX......P.XXX.P......XX...........X
 X.P.XXXXXXXXXXXXXXX...XXX...XXXXXXXXXXXXXXX.P.X
 X...XXXXXXXXXXXXXXX.P.XXX.P.XXXXXXXXXXXXXXX...X
 X.P.........................................P.X
-X..P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P..X
+X..P.P.P.P.P.P.P.P.P.P.C.P.P.P.P.P.P.P.P.P.P..X
 X.............................................X
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

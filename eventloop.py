@@ -8,7 +8,7 @@ class EventLoop:
         self.settings = settings
         self.begin = pygame.mixer.Sound('sounds/pacman_beginning.wav')
         self.begin.set_volume(0.2)
-        self.channel = self.settings.player_channel
+        self.channel = self.settings.begin
 
     def __str__(self):
         return 'eventloop, filename=' + str(self.finished) + ')'
@@ -20,7 +20,6 @@ class EventLoop:
                 stats.save_high_score()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                print("Key was pressed down")
                 if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     player.moving_right = True
                 elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
@@ -53,6 +52,7 @@ class EventLoop:
                     stats.game_active = True
                     self.finished = False
                     sb.prep_player_score()
+                    pygame.mixer.stop()
                     self.channel.play(self.begin)
                     while self.channel.get_busy():
                         self.channel.get_busy()

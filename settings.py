@@ -8,9 +8,9 @@ class Settings:
         self.screen_height = self.SIZE*55
         self.bg_color = (255, 255, 255)
 
-        self.ghost_x = .5
-        self.ghost_y = .5
-        self.get_out = 1
+        self.ghost_x = 1
+        self.ghost_y = 1
+        self.get_out = self.SIZE * 4
 
         self.lives_limit = 3
 

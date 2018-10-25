@@ -25,7 +25,8 @@ class Game:
 
         # self.expandfile = ExpandFile('images/pacman_maze.txt', expandby=4)
         self.maze = Maze(self.screen, mazefile='images/pacman_maze.txt', brickfile='brick', blueportalfile='bluePortal',
-                         orangeportalfile='orangePortal', shieldfile='shield', pointfile='point', powerfile='power')
+                         orangeportalfile='orangePortal', shieldfile='shield', pointfile='point', powerfile='power',
+                         cherryfile='cherry')
 
         self.blueGhost = Ghost(screen=self.screen, settings=ai_settings, ghost_type=1)
         self.redGhost = Ghost(screen=self.screen, settings=ai_settings, ghost_type=2)
@@ -45,7 +46,8 @@ class Game:
             if not self.stats.game_active:
                 self.play_button.draw_button()
             pygame.display.flip()
-
+        while self.settings.begin.get_busy():
+            self.settings.begin.get_busy()
         while not eloop.finished:
             eloop.check_events(self.stats, self.player)
             self.update_screen()
