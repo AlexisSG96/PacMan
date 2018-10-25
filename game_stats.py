@@ -1,7 +1,7 @@
 """
 Name: Alexis Steven Garcia
-Project: Space Invaders
-Date: October 8, 2018
+Project: PacMan
+Date: October 25, 2018
 Email: AlexisSG96@csu.fullerton.edu
 """
 

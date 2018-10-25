@@ -1,7 +1,7 @@
 """
 Name: Alexis Steven Garcia
-Project: PacMan Portal
-Date: October 18, 2018
+Project: PacMan
+Date: October 25, 2018
 Email: AlexisSG96@csu.fullerton.edu
 """
 import pygame.font
