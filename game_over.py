@@ -16,6 +16,8 @@ class GameOver:
         self.game_overs = []
         self.done = False
 
+        self.prep_game_over()
+
         self.counter = 0
 
         self.game_over_sound = pygame.mixer.Sound('sounds/game_over.wav')
@@ -25,7 +27,7 @@ class GameOver:
     def prep_game_over(self):
         self.images = ['pac_game_over']
         self.image = self.images[0]
-        self.game_over = ImageRect(self.screen, self.image, self.SIZE * 1, self.SIZE * 1)
+        self.game_over = ImageRect(self.screen, self.image, self.SIZE * 50, self.SIZE * 20)
         r = self.game_over.rect
         w, h = r.width, r.height
         self.game_overs.append(pygame.Rect(0, 0, w, h))
@@ -33,8 +35,11 @@ class GameOver:
             rect.center = self.screen_rect.center
 
     def blit_me(self):
-        self.counter += 1
+        if not self.channel.get_busy() and self.counter == 0:
+            self.channel.play(self.game_over_sound)
+            self.counter += 1
+        if not self.channel.get_busy() and self.counter == 1:
+            self.counter += 1
         self.screen.fill(self.black)
         for rect in self.game_overs:
             self.screen.blit(self.game_over.image, rect)
-        self.channel.queue(self.game_over_sound)

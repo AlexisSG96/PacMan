@@ -47,7 +47,7 @@ class Game:
     def __str__(self): return 'Game(Pacman Portal), maze='+str(self.maze)+')'
 
     def play(self):
-        eloop = EventLoop(finished=False, settings=self.settings)
+        eloop = EventLoop(finished=True, settings=self.settings)
         while True:
             while eloop.finished:
                 eloop.check_play_button(self.stats, self.sb, self.play_button)
@@ -62,10 +62,10 @@ class Game:
                 self.player_ghost_update()
                 if self.stats.lives_left == 0:
                     self.reset_game()
-                    # while not eloop.finished:
-                    #     self.game_over_screen.blit_me()
-                    #     pygame.display.flip()
-                    #     if self.game_over_screen.counter == 10000:
+                    while self.game_over_screen.counter != 2:
+                        eloop.check_events(self.stats, self.player)
+                        self.game_over_screen.blit_me()
+                        pygame.display.flip()
                     eloop.finished = True
 
     def update_screen(self):
