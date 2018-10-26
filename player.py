@@ -204,6 +204,7 @@ class Player:
     def check_ghost_collision(self, rect):
         for rghost in self.inky.ghosts:
             if rect.colliderect(rghost) and not self.inky.power_pill and not self.pinky.dead:
+                pygame.mixer.stop()
                 self.channel.queue(self.player_death_sound)
                 self.dead = True
                 self.image_index = 0
@@ -214,6 +215,7 @@ class Player:
                 self.inky.dead = True
         for rghost in self.blinky.ghosts:
             if rect.colliderect(rghost) and not self.blinky.power_pill and not self.pinky.dead:
+                pygame.mixer.stop()
                 self.channel.queue(self.player_death_sound)
                 self.dead = True
                 self.image_index = 0
@@ -224,6 +226,7 @@ class Player:
                 self.blinky.dead = True
         for rghost in self.clyde.ghosts:
             if rect.colliderect(rghost) and not self.clyde.power_pill and not self.pinky.dead:
+                pygame.mixer.stop()
                 self.channel.queue(self.player_death_sound)
                 self.dead = True
                 self.image_index = 0
@@ -234,6 +237,7 @@ class Player:
                 self.clyde.dead = True
         for rghost in self.pinky.ghosts:
             if rect.colliderect(rghost) and not self.pinky.power_pill and not self.pinky.dead:
+                pygame.mixer.stop()
                 self.channel.queue(self.player_death_sound)
                 self.dead = True
                 self.image_index = 0

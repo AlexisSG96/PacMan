@@ -350,8 +350,6 @@ class StartScreen:
                     self.leftpac = self.left_images[self.image_index]
                     self.animation = 1
         if self.introduction:
-            if self.channel.get_busy():
-                pygame.mixer.fadeout(10000)
             time_test = pygame.time.get_ticks()
             if self.counter == 4:
                 self.counter = 0
@@ -373,7 +371,7 @@ class StartScreen:
                 for rect in self.intros:
                     self.screen.blit(self.intro.image, rect)
                 self.screen.blit(self.int_ink_img, self.rint_ink)
-            if abs(self.last_frame - time_test) > 3000:
+            if abs(self.last_frame - time_test) > 1000:
                 self.last_frame = time_test
                 self.intro_index = (self.intro_index + 1) % len(self.intro_images)
                 self.image = self.intro_images[self.intro_index]

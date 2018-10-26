@@ -20,9 +20,10 @@ class Settings:
 
         self.lives_limit = 3
 
-        self.audio_channels = 5
+        self.audio_channels = 6
         self.player_channel = mixer.Channel(0)
-        self.ghost_channel = mixer.Channel(1)
+        self.ghost_walk_channel = mixer.Channel(1)
+        self.ghost_run_channel = mixer.Channel(5)
         self.death_channel = mixer.Channel(2)
         self.eat_channel = mixer.Channel(3)
         self.begin = mixer.Channel(4)
