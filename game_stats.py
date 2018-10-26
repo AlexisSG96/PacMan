@@ -18,7 +18,7 @@ class GameStats:
         self.game_active = False
 
     def reset_stats(self):
-        self.lives_left = self.settings.lives_limit - 3
+        self.lives_left = self.settings.lives_limit
         self.player_score = 0
         self.level = 1
 

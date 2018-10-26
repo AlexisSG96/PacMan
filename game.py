@@ -55,6 +55,7 @@ class Game:
                     self.play_button.draw_button()
                 pygame.display.flip()
             while self.settings.begin.get_busy():
+                eloop.check_events(self.stats, self.player)
                 self.settings.begin.get_busy()
             while not eloop.finished:
                 eloop.check_events(self.stats, self.player)
@@ -95,6 +96,7 @@ class Game:
         self.player.reset_player()
         self.stats.reset_stats()
         self.settings.reset_settings()
+        self.maze.build()
         pygame.mouse.set_visible(True)
         self.stats.game_active = False
 
