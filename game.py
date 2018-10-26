@@ -48,6 +48,7 @@ class Game:
 
     def play(self):
         eloop = EventLoop(finished=True, settings=self.settings)
+        self.reset_game()
         while True:
             while eloop.finished:
                 eloop.check_play_button(self.stats, self.sb, self.play_button)
