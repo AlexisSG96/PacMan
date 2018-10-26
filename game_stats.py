@@ -12,7 +12,7 @@ class GameStats:
         self.lives_left = 0
         self.high_score = 0
         self.player_score = 0
-        self.level = 0
+        self.level = 1
         self.reset_stats()
         self.get_high_score()
         self.game_active = False

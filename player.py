@@ -40,8 +40,8 @@ class Player:
         self.moving_up = False
         self.moving_down = False
 
-        self.x_direction = .8
-        self.y_direction = .8
+        self.x_direction = self.settings.player_x
+        self.y_direction = self.settings.player_y
 
         for rect in self.players:
             self.x = float(rect.x)
@@ -196,6 +196,8 @@ class Player:
                 self.image = self.dead_images[self.image_index]
                 self.last_frame = pygame.time.get_ticks()
             if rect.colliderect(rghost) and self.inky.power_pill and not self.inky.dead:
+                self.stats.player_score += 100
+                self.sb.prep_player_score_and_level()
                 self.channel.play(self.player_eat)
                 self.inky.dead = True
         for rghost in self.blinky.ghosts:
@@ -207,6 +209,8 @@ class Player:
                 self.image = self.dead_images[self.image_index]
                 self.last_frame = pygame.time.get_ticks()
             if rect.colliderect(rghost) and self.blinky.power_pill and not self.blinky.dead:
+                self.stats.player_score += 100
+                self.sb.prep_player_score_and_level()
                 self.channel.play(self.player_eat)
                 self.blinky.dead = True
         for rghost in self.clyde.ghosts:
@@ -218,6 +222,8 @@ class Player:
                 self.image = self.dead_images[self.image_index]
                 self.last_frame = pygame.time.get_ticks()
             if rect.colliderect(rghost) and self.clyde.power_pill and not self.clyde.dead:
+                self.stats.player_score += 100
+                self.sb.prep_player_score_and_level()
                 self.channel.play(self.player_eat)
                 self.clyde.dead = True
         for rghost in self.pinky.ghosts:
@@ -229,6 +235,8 @@ class Player:
                 self.image = self.dead_images[self.image_index]
                 self.last_frame = pygame.time.get_ticks()
             if rect.colliderect(rghost) and self.pinky.power_pill and not self.pinky.dead:
+                self.stats.player_score += 100
+                self.sb.prep_player_score_and_level()
                 self.channel.play(self.player_eat)
                 self.pinky.dead = True
 
@@ -246,9 +254,18 @@ class Player:
                     self.channel.play(self.player_chomp)
                 self.stats.player_score += 50
                 self.check_high_score(self.stats)
-                self.sb.prep_player_score()
+                self.sb.prep_player_score_and_level()
                 maze.points.pop(counter)
             counter += 1
+            if len(maze.points) == 0:
+                self.reset_player()
+                self.inky.reset_ghost()
+                self.blinky.reset_ghost()
+                self.clyde.reset_ghost()
+                self.pinky.reset_ghost()
+                self.stats.level += 1
+                self.settings.increase_speed()
+                maze.build()
         counter = 0
         for rcherry in maze.cherries:
             if rect.colliderect(rcherry):
@@ -258,7 +275,7 @@ class Player:
                     pygame.mixer.unpause()
                 self.stats.player_score += 150
                 self.check_high_score(self.stats)
-                self.sb.prep_player_score()
+                self.sb.prep_player_score_and_level()
                 maze.cherries.pop(counter)
             counter += 1
         counter = 0

@@ -14,8 +14,11 @@ class Settings:
         self.screen_height = self.SIZE*55
         self.bg_color = (255, 255, 255)
 
-        self.ghost_x = 1
-        self.ghost_y = 1
+        self.player_x = 0.5
+        self.player_y = 0.5
+
+        self.ghost_x = 0.5
+        self.ghost_y = 0.5
         self.get_out = self.SIZE * 4
 
         self.lives_limit = 3
@@ -28,6 +31,18 @@ class Settings:
         self.eat_channel = mixer.Channel(3)
         self.begin = mixer.Channel(4)
         self.initialize_audio_settings()
+
+    def increase_speed(self):
+        self.player_x += 0.1
+        self.player_y += 0.1
+        self.ghost_x += 0.15
+        self.ghost_y += 0.15
+
+    def reset_settings(self):
+        self.player_x = 0.5
+        self.player_y = 0.5
+        self.ghost_x = 0.5
+        self.ghost_y = 0.5
 
     def initialize_audio_settings(self):
         """Initialize mixer settings."""

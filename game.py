@@ -45,7 +45,7 @@ class Game:
     def __str__(self): return 'Game(Pacman Portal), maze='+str(self.maze)+')'
 
     def play(self):
-        eloop = EventLoop(finished=True, settings=self.settings)
+        eloop = EventLoop(finished=False, settings=self.settings)
         while True:
             while eloop.finished:
                 eloop.check_play_button(self.stats, self.sb, self.play_button)
@@ -89,6 +89,7 @@ class Game:
         self.pinkGhost.reset_ghost()
         self.player.reset_player()
         self.stats.reset_stats()
+        self.settings.reset_settings()
         pygame.mouse.set_visible(True)
         self.stats.game_active = False
 
