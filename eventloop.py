@@ -57,7 +57,7 @@ class EventLoop:
                     stats.reset_stats()
                     stats.game_active = True
                     self.finished = False
-                    sb.prep_player_score()
+                    sb.prep_player_score_and_level()
                     pygame.mixer.stop()
                     self.channel.play(self.begin)
                     while self.channel.get_busy():

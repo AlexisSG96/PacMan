@@ -356,7 +356,8 @@ class Ghost:
         if rect.collidepoint(((47*self.SIZE/2)-4, 21*self.SIZE)):
             return True
 
-    def time_check(self):
+    @staticmethod
+    def time_check():
         time = pygame.time.get_ticks()
         if time > 5500:
             return True
@@ -385,53 +386,45 @@ class Ghost:
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(9, 15):
+                for j in range(9, 13):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y -= 1 * abs(self.y_direction)
                         rect.y = self.y
+                for j in range(12, 15):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x += 1 * abs(self.x_direction)
+                        rect.x = self.x
                 for j in range(33, 36):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(35, 39):
+                for j in range(34, 41):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y -= 1 * abs(self.y_direction)
                         rect.y = self.y
+                for j in range(43, 46):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x += 1 * abs(self.x_direction)
+                        rect.x = self.x
+                for j in range(44, 51):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.y -= 1 * abs(self.y_direction)
+                        rect.y = self.y
+            for i in range(4, 7):
                 for j in range(38, 41):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(43, 46):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x += 1 * abs(self.x_direction)
-                        rect.x = self.x
-                for j in range(48, 51):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x -= 1 * abs(self.x_direction)
-                        rect.x = self.x
-                for j in range(45, 51):
+                for j in range(39, 46):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y -= 1 * abs(self.y_direction)
                         rect.y = self.y
-            for i in range(3, 7):
-                for j in range(38, 41):
+            for i in range(6, 10):
+                for j in range(43, 46):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(43, 46):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x += 1 * abs(self.x_direction)
-                        rect.x = self.x
-                for j in range(40, 44):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.y -= 1 * abs(self.y_direction)
-                        rect.y = self.y
-            for i in range(7, 10):
-                for j in range(43, 46):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x += 1 * abs(self.x_direction)
-                        rect.x = self.x
-            for i in range(4, 10):
+            for i in range(3, 10):
                 for j in range(1, 4):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x += 1 * abs(self.x_direction)
@@ -453,22 +446,26 @@ class Ghost:
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y += 1 * abs(self.y_direction)
                         rect.y = self.y
-                for j in range(9, 46):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.y -= 1 * abs(self.y_direction)
-                        rect.y = self.y
-                for j in range(43, 46):
+                for j in range(7, 10):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
-            for i in range(11, 20):
-                for j in range(1, 4):
+                for j in range(9, 24):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x -= 1 * abs(self.x_direction)
+                        self.y += 1 * abs(self.y_direction)
+                        rect.y = self.y
+                for j in range(23, 26):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(38, 41):
+                for j in range(25, 46):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x -= 1 * abs(self.x_direction)
+                        self.y -= 1 * abs(self.y_direction)
+                        rect.y = self.y
+            for i in range(1, 10):
+                for j in range(23, 26):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
             for i in range(11, 15):
                 for j in range(7, 10):
@@ -485,36 +482,10 @@ class Ghost:
                         rect.x = self.x
                 for j in range(38, 41):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x += 1 * abs(self.x_direction)
-                        rect.x = self.x
-            for i in range(16, 23):
-                for j in range(7, 10):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(33, 36):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x -= 1 * abs(self.x_direction)
-                        rect.x = self.x
-            for i in range(19, 22):
-                for j in range(3, 8):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.y += 1 * abs(self.y_direction)
-                        rect.y = self.y
-                for j in range(12, 18):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                            self.y += 1 * abs(self.y_direction)
-                            rect.y = self.y
-                for j in range(33, 39):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                            self.y -= 1 * abs(self.y_direction)
-                            rect.y = self.y
-                for j in range(45, 51):
-                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                            self.y += 1 * abs(self.y_direction)
-                            rect.y = self.y
             for i in range(14, 17):
-                for j in range(8, 13):
+                for j in range(7, 14):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y += 1 * abs(self.y_direction)
                         rect.y = self.y
@@ -522,11 +493,15 @@ class Ghost:
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x += 1 * abs(self.x_direction)
                         rect.x = self.x
-                for j in range(30, 36):
+                for j in range(29, 36):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y -= 1 * abs(self.y_direction)
                         rect.y = self.y
-                for j in range(40, 46):
+                for j in range(38, 41):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x -= 1 * abs(self.x_direction)
+                        rect.x = self.x
+                for j in range(39, 46):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.y -= 1 * abs(self.y_direction)
                         rect.y = self.y
@@ -551,17 +526,45 @@ class Ghost:
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-            for i in range(1, 9):
-                for j in range(23, 26):
+            for i in range(19, 22):
+                for j in range(1, 4):
                     if rect.collidepoint(i*self.SIZE, j*self.SIZE):
-                        self.x += 1 * abs(self.x_direction)
+                        self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-            for i in range(3, 20):
-                for j in range(48, 51):
+                for j in range(3, 8):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.y += 1 * abs(self.y_direction)
+                        rect.y = self.y
+                for j in range(7, 10):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x -= 1 * abs(self.x_direction)
+                        rect.x = self.x
+                for j in range(12, 18):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.y += 1 * abs(self.y_direction)
+                        rect.y = self.y
+                for j in range(33, 36):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.x -= 1 * abs(self.x_direction)
+                        rect.x = self.x
+                for j in range(34, 41):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.y -= 1 * abs(self.y_direction)
+                        rect.y = self.y
+                for j in range(43, 46):
                     if rect.collidepoint(i * self.SIZE, j * self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
-            for i in range(21, 26):
+                for j in range(44, 51):
+                    if rect.collidepoint(i*self.SIZE, j*self.SIZE):
+                        self.y += 1 * abs(self.y_direction)
+                        rect.y = self.y
+            for i in range(11, 20):
+                for j in range(1, 4):
+                    if rect.collidepoint(i * self.SIZE, j * self.SIZE):
+                        self.x -= 1 * abs(self.x_direction)
+                        rect.x = self.x
+            for i in range(22, 25):
                 for j in range(7, 10):
                     if rect.collidepoint(i * self.SIZE, j * self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
@@ -570,6 +573,11 @@ class Ghost:
                     if rect.collidepoint(i * self.SIZE, j * self.SIZE):
                         self.x -= 1 * abs(self.x_direction)
                         rect.x = self.x
+                for j in range(48, 51):
+                    if rect.collidepoint(i * self.SIZE, j * self.SIZE):
+                        self.x -= 1 * abs(self.x_direction)
+                        rect.x = self.x
+            for i in range(3, 20):
                 for j in range(48, 51):
                     if rect.collidepoint(i * self.SIZE, j * self.SIZE):
                         self.x -= 1 * abs(self.x_direction)

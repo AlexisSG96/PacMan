@@ -11,6 +11,7 @@ from settings import Settings
 from eventloop import EventLoop
 from game_stats import GameStats
 from scoreboard import Scoreboard
+from game_over import GameOver
 from ghost import Ghost
 from player import Player
 from maze import Maze
@@ -41,6 +42,7 @@ class Game:
         self.player = Player(screen=self.screen, settings=ai_settings, stats=self.stats, sb=self.sb,
                              inky=self.blueGhost, blinky=self.redGhost,
                              clyde=self.orangeGhost, pinky=self.pinkGhost)
+        self.game_over_screen = GameOver(screen=self.screen, settings=self.settings)
 
     def __str__(self): return 'Game(Pacman Portal), maze='+str(self.maze)+')'
 
@@ -58,9 +60,12 @@ class Game:
                 eloop.check_events(self.stats, self.player)
                 self.update_screen()
                 self.player_ghost_update()
-                print(self.stats.lives_left)
                 if self.stats.lives_left == 0:
                     self.reset_game()
+                    # while not eloop.finished:
+                    #     self.game_over_screen.blit_me()
+                    #     pygame.display.flip()
+                    #     if self.game_over_screen.counter == 10000:
                     eloop.finished = True
 
     def update_screen(self):

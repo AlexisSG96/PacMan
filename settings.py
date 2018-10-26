@@ -23,13 +23,14 @@ class Settings:
 
         self.lives_limit = 3
 
-        self.audio_channels = 6
+        self.audio_channels = 7
         self.player_channel = mixer.Channel(0)
         self.ghost_walk_channel = mixer.Channel(1)
-        self.ghost_run_channel = mixer.Channel(5)
         self.death_channel = mixer.Channel(2)
         self.eat_channel = mixer.Channel(3)
         self.begin = mixer.Channel(4)
+        self.ghost_run_channel = mixer.Channel(5)
+        self.game_over_channel = mixer.Channel(6)
         self.initialize_audio_settings()
 
     def increase_speed(self):
