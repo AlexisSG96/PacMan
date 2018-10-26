@@ -46,18 +46,22 @@ class Game:
 
     def play(self):
         eloop = EventLoop(finished=True, settings=self.settings)
-
-        while eloop.finished:
-            eloop.check_play_button(self.stats, self.sb, self.play_button)
-            if not self.stats.game_active:
-                self.play_button.draw_button()
-            pygame.display.flip()
-        while self.settings.begin.get_busy():
-            self.settings.begin.get_busy()
-        while not eloop.finished:
-            eloop.check_events(self.stats, self.player)
-            self.update_screen()
-            self.player_ghost_update()
+        while True:
+            while eloop.finished:
+                eloop.check_play_button(self.stats, self.sb, self.play_button)
+                if not self.stats.game_active:
+                    self.play_button.draw_button()
+                pygame.display.flip()
+            while self.settings.begin.get_busy():
+                self.settings.begin.get_busy()
+            while not eloop.finished:
+                eloop.check_events(self.stats, self.player)
+                self.update_screen()
+                self.player_ghost_update()
+                print(self.stats.lives_left)
+                if self.stats.lives_left == 0:
+                    self.reset_game()
+                    eloop.finished = True
 
     def update_screen(self):
         self.screen.fill(self.BLACK)
@@ -76,6 +80,17 @@ class Game:
         self.redGhost.update(self.maze)
         self.orangeGhost.update(self.maze)
         self.pinkGhost.update(self.maze)
+
+    def reset_game(self):
+        pygame.mixer.stop()
+        self.blueGhost.reset_ghost()
+        self.redGhost.reset_ghost()
+        self.orangeGhost.reset_ghost()
+        self.pinkGhost.reset_ghost()
+        self.player.reset_player()
+        self.stats.reset_stats()
+        pygame.mouse.set_visible(True)
+        self.stats.game_active = False
 
 
 game = Game()

@@ -147,6 +147,7 @@ class Player:
                     self.blinky.reset_ghost()
                     self.clyde.reset_ghost()
                     self.pinky.reset_ghost()
+                    self.stats.lives_left -= 1
                     self.dead = False
                     self.dead_frame = 0
                     self.image_index = 0
@@ -273,6 +274,11 @@ class Player:
                 self.pinky.power_pill = True
                 self.pinky.vulnerable_frame = pygame.time.get_ticks()
             counter += 1
+
+    def reset_player(self):
+        for rect in self.players:
+            self.x, self.y = 21 * self.SIZE, 29 * self.SIZE
+            rect.x, rect.y = self.x, self.y
 
     def blitme(self):
         for rect in self.players:
