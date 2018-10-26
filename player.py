@@ -39,7 +39,6 @@ class Player:
         self.moving_left = False
         self.moving_up = False
         self.moving_down = False
-        self.restart = False
 
         self.x_direction = .8
         self.y_direction = .8
@@ -49,11 +48,6 @@ class Player:
             self.y = float(rect.y)
 
         self.dead = False
-
-        self.inky_eaten = self.inky.dead
-        self.blinky_eaten = self.blinky.dead
-        self.clyde_eaten = self.clyde.dead
-        self.pinky_eaten = self.pinky.dead
 
         # Sound
         self.player_death_sound = pygame.mixer.Sound('sounds/pacman_death.wav')
@@ -95,11 +89,9 @@ class Player:
         time = pygame.time.get_ticks()
         if not self.dead:
             for rect in self.players:
-                self.restart = self.check_restart()
-                if self.check_box_position(rect) and not self.restart:
+                if self.check_box_position(rect):
                     self.y -= 2
                     rect.y = self.y
-                    break
                 self.check_boundaries(rect)
                 self.check_ghost_collision(rect)
                 self.check_pick_up(rect, maze)
@@ -142,33 +134,25 @@ class Player:
             self.clyde.stop = True
             self.pinky.stop = True
             if abs(time_test - self.last_frame) > 550:
-                self.image_index += 1
-                if self.image_index < len(self.dead_images):
-                    self.image = self.dead_images[self.image_index]
+                if self.dead_frame < len(self.dead_images):
+                    self.image = self.dead_images[self.dead_frame]
                     self.last_frame = time_test
                     self.player = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
+                    self.dead_frame += 1
                 else:
                     for rect in self.players:
                         self.x, self.y = 21 * self.SIZE, 29 * self.SIZE
                         rect.x, rect.y = self.x, self.y
-                    self.inky.wait = True
-                    self.blinky.wait = True
-                    self.clyde.wait = True
-                    self.pinky.wait = True
-                    self.inky.stop = False
-                    self.blinky.stop = False
-                    self.clyde.stop = False
-                    self.pinky.stop = False
+                    self.inky.reset_ghost()
+                    self.blinky.reset_ghost()
+                    self.clyde.reset_ghost()
+                    self.pinky.reset_ghost()
                     self.dead = False
+                    self.dead_frame = 0
                     self.image_index = 0
                     self.image = self.left_images[self.image_index]
                     self.last_frame = time_test
                     self.player = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
-                    maze.shield_on = True
-
-    def check_restart(self):
-        if self.inky_eaten and self.blinky_eaten and self.clyde_eaten and self.pinky_eaten:
-            return True
 
     def check_last_frame(self, time_test, images):
         if abs(self.last_frame - time_test) > 100:

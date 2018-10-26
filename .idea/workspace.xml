@@ -4,9 +4,8 @@
     <list default="true" id="d03c4210-cfce-4e1a-9fe1-ed45c9992ea2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/ghost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/high_score.txt" beforeDir="false" afterPath="$PROJECT_DIR$/high_score.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startscreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/startscreen.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +30,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="png" value="1" />
-          <entry key="py" value="100" />
+          <entry key="py" value="101" />
           <entry key="txt" value="14" />
         </counts>
       </usages-collector>
@@ -39,35 +38,35 @@
         <counts>
           <entry key="Image" value="1" />
           <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="100" />
+          <entry key="Python" value="101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="27707" />
+          <entry key="py" value="27936" />
           <entry key="txt" value="605" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="605" />
-          <entry key="Python" value="27707" />
+          <entry key="Python" value="27936" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="239" column="35" selection-start-line="239" selection-start-column="35" selection-end-line="239" selection-end-column="35" />
+            <state relative-caret-position="96">
+              <caret line="129" column="23" lean-forward="true" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
               <folding>
-                <marker date="1540514948509" expanded="true" signature="171:176" ph="..." />
-                <marker date="1540514948509" expanded="true" signature="2016:3051" ph="..." />
-                <marker date="1540514948509" expanded="true" signature="6644:6649" ph="..." />
-                <marker date="1540514948509" expanded="true" signature="7917:10343" ph="..." />
+                <marker date="1540517716669" expanded="true" signature="171:176" ph="..." />
+                <marker date="1540517716669" expanded="true" signature="1814:2849" ph="..." />
+                <marker date="1540517716669" expanded="true" signature="6028:6033" ph="..." />
+                <marker date="1540517716669" expanded="true" signature="7301:9727" ph="..." />
               </folding>
             </state>
           </provider>
@@ -98,15 +97,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ghost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="199" column="21" selection-start-line="199" selection-start-column="21" selection-end-line="199" selection-end-column="21" />
+            <state>
+              <caret line="192" column="28" lean-forward="true" selection-start-line="192" selection-start-column="28" selection-end-line="192" selection-end-column="28" />
               <folding>
                 <element signature="e#110#123#0" expanded="true" />
-                <marker date="1540514948479" expanded="true" signature="9138:9147" ph="..." />
-                <marker date="1540514948479" expanded="true" signature="15363:15369" ph="..." />
+                <marker date="1540517923458" expanded="true" signature="7987:7996" ph="..." />
+                <marker date="1540517923458" expanded="true" signature="14212:14218" ph="..." />
+                <marker date="1540517923458" expanded="true" signature="38235:39164" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/maze.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1210">
+              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+              <folding>
+                <marker date="1540508037357" expanded="true" signature="362:367" ph="..." />
+                <marker date="1540508037357" expanded="true" signature="362:1320" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,16 +141,19 @@
       <find>self.int</find>
       <find>check_hig</find>
       <find>self.inky_e</find>
-      <find>self.wait</find>
       <find>self.out</find>
       <find>self.counter</find>
       <find>self.rec</find>
       <find>for j in range(33, 36)</find>
       <find>self.dead</find>
       <find>inky.dead = F</find>
-      <find>inky.stop</find>
       <find>self.stop</find>
+      <find>check_res</find>
+      <find>inky_ea</find>
+      <find>dead_fram</find>
       <find>inky.wait</find>
+      <find>self.wait</find>
+      <find>inky.stop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,8 +176,8 @@
         <option value="$PROJECT_DIR$/scoreboard.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/startscreen.py" />
-        <option value="$PROJECT_DIR$/ghost.py" />
         <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/ghost.py" />
       </list>
     </option>
   </component>
@@ -287,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540508068477</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated">
+      <created>1540515700091</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540515700091</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -406,9 +429,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maze.py">
+    <entry file="file://$PROJECT_DIR$/scoreboard.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maze.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1210">
           <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
           <folding>
             <marker date="1540508037357" expanded="true" signature="362:367" ph="..." />
@@ -417,10 +454,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scoreboard.py">
+    <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        <state relative-caret-position="96">
+          <caret line="129" column="23" lean-forward="true" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
+          <folding>
+            <marker date="1540517716669" expanded="true" signature="171:176" ph="..." />
+            <marker date="1540517716669" expanded="true" signature="1814:2849" ph="..." />
+            <marker date="1540517716669" expanded="true" signature="6028:6033" ph="..." />
+            <marker date="1540517716669" expanded="true" signature="7301:9727" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -440,32 +483,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ghost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="199" column="21" selection-start-line="199" selection-start-column="21" selection-end-line="199" selection-end-column="21" />
+        <state>
+          <caret line="192" column="28" lean-forward="true" selection-start-line="192" selection-start-column="28" selection-end-line="192" selection-end-column="28" />
           <folding>
             <element signature="e#110#123#0" expanded="true" />
-            <marker date="1540514948479" expanded="true" signature="9138:9147" ph="..." />
-            <marker date="1540514948479" expanded="true" signature="15363:15369" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="239" column="35" selection-start-line="239" selection-start-column="35" selection-end-line="239" selection-end-column="35" />
-          <folding>
-            <marker date="1540514948509" expanded="true" signature="171:176" ph="..." />
-            <marker date="1540514948509" expanded="true" signature="2016:3051" ph="..." />
-            <marker date="1540514948509" expanded="true" signature="6644:6649" ph="..." />
-            <marker date="1540514948509" expanded="true" signature="7917:10343" ph="..." />
+            <marker date="1540517923458" expanded="true" signature="7987:7996" ph="..." />
+            <marker date="1540517923458" expanded="true" signature="14212:14218" ph="..." />
+            <marker date="1540517923458" expanded="true" signature="38235:39164" ph="..." />
           </folding>
         </state>
       </provider>

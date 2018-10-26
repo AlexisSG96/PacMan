@@ -44,11 +44,10 @@ class Ghost:
             self.x = float(rect.x)
             self.y = float(rect.y)
 
-        self.outside = False
+        self.flash = 1000
         self.vuln_flag = False
         self.dead = False
         self.stop = False
-        self.wait = False
         self.power_pill = False
         self.counter = 0
 
@@ -142,23 +141,19 @@ class Ghost:
 
     def update(self, maze):
         time_test = pygame.time.get_ticks()
-        if not self.dead:
-            if abs(self.last_frame - time_test) > 1000:
-                self.last_frame = time_test
-                self.image_index = (self.image_index + 1) % len(self.images)
-                self.image = self.images[self.image_index]
-                self.ghost = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
-        if self.dead:
+        if self.dead and not self.stop:
             if abs(self.last_frame - time_test) > 1000:
                 self.last_frame = time_test
                 self.death_index = (self.death_index + 1) % len(self.death_frames)
                 self.image = self.death_frames[self.death_index]
                 self.ghost = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
-                self.counter += 1
-            if self.counter == 2:
-                self.power_pill = False
             self.go_home()
         if not self.dead and not self.stop and not self.power_pill:
+            if abs(self.last_frame - time_test) > 1000:
+                self.last_frame = time_test
+                self.image_index = (self.image_index + 1) % len(self.images)
+                self.image = self.images[self.image_index]
+                self.ghost = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
             if not self.walk_channel.get_busy():
                 self.walk_channel.play(self.walk)
             if self.ghost_type == 1:
@@ -177,13 +172,15 @@ class Ghost:
                 self.image = self.blue_frames[0]
                 self.ghost = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
             if abs(self.vulnerable_frame - time_test) > 5000:
-                if abs(self.switch_frame - time_test) > 1000:
+                if abs(self.switch_frame - time_test) > self.flash:
+                    self.flash -= 200
                     self.switch_frame = time_test
                     self.vulnerable_index = (self.vulnerable_index + 1) % len(self.blue_frames)
                     self.image = self.blue_frames[self.vulnerable_index]
                     self.ghost = ImageRect(self.screen, self.image, self.SIZE * 2, self.SIZE * 2)
                     self.counter += 1
                 if self.counter == 6:
+                    self.flash = 1000
                     self.power_pill = False
                     self.vuln_flag = False
                     self.vulnerable_index = 0
@@ -196,33 +193,8 @@ class Ghost:
                 self.clyde_route(maze, time_test)
             if self.ghost_type == 4:
                 self.pinky_route(maze, time_test)
-        # if not self.dead and self.stop and not self.power_pill:
         if self.stop:
-            self.power_pill = False
-            self.dead = False
-            for rect in self.ghosts:
-                if self.wait:
-                    if self.ghost_type == 1:
-                        self.x = 18*self.SIZE
-                        self.y = 22*self.SIZE
-                        rect.x = self.x
-                        rect.y = self.y
-                    if self.ghost_type == 2:
-                        self.x = 27*self.SIZE
-                        self.y = 22*self.SIZE
-                        rect.x = self.x
-                        rect.y = self.y
-                    if self.ghost_type == 3:
-                        self.x = 18*self.SIZE
-                        self.y = 25*self.SIZE
-                        rect.x = self.x
-                        rect.y = self.y
-                    if self.ghost_type == 4:
-                        self.x = 27*self.SIZE
-                        self.y = 25*self.SIZE
-                        rect.x = self.x
-                        rect.y = self.y
-                    self.wait = False
+            pass
 
     def inky_route(self, maze, time):
         if not self.collide_x:
@@ -386,8 +358,7 @@ class Ghost:
 
     def time_check(self):
         time = pygame.time.get_ticks()
-        if time > 5500 and not self.outside:
-            self.outside = True
+        if time > 5500:
             return True
 
     @staticmethod
@@ -850,6 +821,36 @@ class Ghost:
                         self.y = 24 * self.SIZE
                         rect.y += self.y
                         self.dead = False
+                        self.power_pill = False
+
+    def reset_ghost(self):
+        self.flash = 1000
+        self.vuln_flag = False
+        self.dead = False
+        self.stop = False
+        self.power_pill = False
+        self.counter = 0
+        for rect in self.ghosts:
+            if self.ghost_type == 1:
+                self.x = 18 * self.SIZE
+                self.y = 22 * self.SIZE
+                rect.x = self.x
+                rect.y = self.y
+            if self.ghost_type == 2:
+                self.x = 27 * self.SIZE
+                self.y = 22 * self.SIZE
+                rect.x = self.x
+                rect.y = self.y
+            if self.ghost_type == 3:
+                self.x = 18 * self.SIZE
+                self.y = 25 * self.SIZE
+                rect.x = self.x
+                rect.y = self.y
+            if self.ghost_type == 4:
+                self.x = 27 * self.SIZE
+                self.y = 25 * self.SIZE
+                rect.x = self.x
+                rect.y = self.y
 
     def blitme(self):
         for rect in self.ghosts:
